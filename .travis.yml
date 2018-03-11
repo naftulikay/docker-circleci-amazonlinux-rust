@@ -10,12 +10,12 @@ services:
 install: true
 
 script:
-  - docker build -t naftulikay/amazonlinux-rust-dev .
+  - docker build -t naftulikay/circleci-amazonlinux-rust .
 
 deploy:
   - provider: script
     script: |
-      curl -sSL -i -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/naftulikay/amazonlinux-rust/trigger/56f017e6-9855-415f-8673-2c69da805863/
+      curl -sSL -i -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/naftulikay/circleci-amazonlinux-rust/trigger/56f017e6-9855-415f-8673-2c69da805863/
     on:
       branch: master
 
