@@ -15,7 +15,7 @@ script:
 deploy:
   - provider: script
     script: |
-      curl -sSL -i -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/naftulikay/circleci-amazonlinux-rust/trigger/56f017e6-9855-415f-8673-2c69da805863/
+      curl -sSL -i -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/naftulikay/circleci-amazonlinux-rust/trigger/05b2a392-37e5-487c-902e-3926d5e3beff/
     on:
       branch: master
 
