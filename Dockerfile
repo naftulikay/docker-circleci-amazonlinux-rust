@@ -3,7 +3,7 @@ FROM centos:7
 MAINTAINER Naftuli Kay <me@naftuli.wtf>
 
 ENV RUST_USER=rust
-ENV RUST_HOME=/home/${CIRCLECI_USER}
+ENV RUST_HOME=/home/${RUST_USER}
 
 # upgrade all packages, install epel, then install build requirements
 RUN yum upgrade -y > /dev/null && \
