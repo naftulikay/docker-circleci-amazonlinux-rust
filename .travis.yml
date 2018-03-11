@@ -1,0 +1,25 @@
+---
+dist: trusty
+
+matrix:
+  fast_finish: true
+
+services:
+  - docker
+
+install: true
+
+script:
+  - docker build -t naftulikay/amazonlinux-rust-dev .
+
+deploy:
+  - provider: script
+    script: |
+      curl -sSL -i -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/naftulikay/amazonlinux-rust/trigger/56f017e6-9855-415f-8673-2c69da805863/
+    on:
+      branch: master
+
+notifications:
+  email:
+    on_success: never
+    on_failure: never
