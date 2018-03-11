@@ -1,7 +1,0 @@
----
-- name: build
-  hosts: all
-  become: true
-  roles:
-    - name: rust-dev
-      rust_user: "{{ rust_user | default('rust') }}"
