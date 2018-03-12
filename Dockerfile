@@ -38,6 +38,10 @@ RUN curl https://sh.rustup.rs -sSf | sudo -u ${RUST_USER} sh -s -- -y && \
   chmod 0755 /etc/bash_completion.d/rust && \
   rsync -a ${RUST_HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/man/man1/ /usr/local/share/man/man1/
 
+# degoss the image
+COPY bin/degoss goss.yml /tmp/
+RUN /tmp/degoss /tmp/goss.yml
+
 USER ${RUST_USER}
 WORKDIR ${RUST_HOME}
 ENV ["PATH", "/home/${RUST_USER}/.cargo/bin:/home/${RUST_USER}/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"]
