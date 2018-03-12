@@ -1,4 +1,9 @@
 ---
-file:
-  '/dev/null':
-      exists: true
+user:
+  'circleci':
+    exists: true
+    uid: 1000
+    gid: 1000
+    groups:
+      - sudo
+    home: /home/circleci

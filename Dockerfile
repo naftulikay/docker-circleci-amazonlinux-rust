@@ -21,7 +21,7 @@ RUN echo '/usr/local/lib' > /etc/ld.so.conf.d/local.conf
 
 # create sudo group and add sudoers config
 COPY conf/sudoers.d/50-sudo /etc/sudoers.d/
-RUN groupadd sudo && adduser -G sudo -m ${RUST_USER}
+RUN groupadd sudo && useradd -G sudo -u 1000 -U ${RUST_USER}
 
 # add rust profile setup
 COPY conf/profile.d/base.sh conf/profile.d/rust.sh /etc/profile.d/
