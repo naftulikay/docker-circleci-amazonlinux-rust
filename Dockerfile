@@ -21,7 +21,7 @@ RUN echo '/usr/local/lib' > /etc/ld.so.conf.d/local.conf
 
 # create sudo group and add sudoers config
 COPY conf/sudoers.d/50-sudo /etc/sudoers.d/
-RUN groupadd sudo && adduser -G sudo -m ${RUST_USER}
+RUN groupadd sudo && useradd -G sudo -u 1000 -U ${RUST_USER}
 
 # add rust profile setup
 COPY conf/profile.d/base.sh conf/profile.d/rust.sh /etc/profile.d/
@@ -37,6 +37,10 @@ RUN curl https://sh.rustup.rs -sSf | sudo -u ${RUST_USER} sh -s -- -y && \
   ${RUST_HOME}/.cargo/bin/rustup completions bash | tee /etc/bash_completion.d/rust >/dev/null && \
   chmod 0755 /etc/bash_completion.d/rust && \
   rsync -a ${RUST_HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/man/man1/ /usr/local/share/man/man1/
+
+# degoss the image
+COPY bin/degoss goss.yml /tmp/
+RUN /tmp/degoss /tmp/goss.yml
 
 USER ${RUST_USER}
 WORKDIR ${RUST_HOME}
