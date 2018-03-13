@@ -1,4 +1,4 @@
-FROM amazonlinux:latest
+FROM amazonlinux:2017.03.1.20170812
 
 MAINTAINER Naftuli Kay <me@naftuli.wtf>
 
