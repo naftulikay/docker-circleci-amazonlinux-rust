@@ -4,6 +4,10 @@ A Rust development environment on Amazon Linux. Useful for Lambda build contexts
 
 Available on Docker Hub at [`naftulikay/circleci-amazonlinux-rust`][docker].
 
+Of special note is the `lambda` version
+tag, which corresponds here to the `lambda` branch. This release is pinned to the latest Amazon Linux image for Lambda
+functions.
+
 ## License
 
 Licensed at your discretion under either:
