@@ -7,3 +7,20 @@ user:
     groups:
       - sudo
     home: /home/circleci
+
+package:
+  'curl': { installed: true }
+  'gcc': { installed: true }
+  'glibc-static': { installed: true }
+  'jq': { installed: true }
+  'make': { installed: true }
+  'openssl-devel': { installed: true }
+  'openssl-static': { installed: true }
+  'pcre-devel': { installed: true }
+  'pcre-static': { installed: true }
+  'sudo': { installed: true }
+  'wget': { installed: true }
+  'which': { installed: true }
+  'zip': { installed: true }
+  'zlib-devel': { installed: true }
+  'zlib-static': { installed: true }

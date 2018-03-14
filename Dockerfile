@@ -5,12 +5,55 @@ MAINTAINER Naftuli Kay <me@naftuli.wtf>
 ENV RUST_USER=circleci
 ENV RUST_HOME=/home/${RUST_USER}
 
+ENV _TOOL_PACKAGES="\
+  autoconf \
+  automake \
+  bash-completion \
+  cmake \
+  curl \
+  file \
+  gcc \
+  git \
+  jq \
+  libtool \
+  make \
+  man \
+  man-pages \
+  pcre-tools \
+  pkgconfig \
+  python-pip \
+  python34-pip \
+  sudo \
+  tree \
+  unzip \
+  wget \
+  which \
+  zip \
+  "
+ENV _STATIC_PACKAGES="\
+  glibc-static \
+  openssl-static \
+  pcre-static \
+  zlib-static \
+  "
+
+ENV _DEVEL_PACKAGES="\
+  binutils-devel \
+  openssl-devel \
+  kernel-devel \
+  libcurl-devel \
+  libffi-devel \
+  pcre-devel \
+  python-devel \
+  python34-devel \
+  xz-devel \
+  zlib-devel \
+  "
+
 # upgrade all packages, install epel, then install build requirements
 RUN yum upgrade -y > /dev/null && \
   yum install -y epel-release >/dev/null && \
-  yum install -y sudo unzip git openssl-devel kernel-devel which make gcc python-devel python34-devel python-pip \
-    python34-pip curl file autoconf automake cmake libtool libcurl-devel binutils-devel zlib-devel wget xz-devel \
-    pkgconfig libffi-devel bash-completion man-pages tree jq zip && \
+  yum install -y ${_TOOL_PACKAGES} ${_STATIC_PACKAGES} ${_DEVEL_PACKAGES} && \
   yum clean all
 
 # install and upgrade pip and utils
